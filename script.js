@@ -1,5 +1,4 @@
-let compChoice=0;
-let humanChoice="";
+
 
 function getComputerChoice(){
     
@@ -7,22 +6,25 @@ function getComputerChoice(){
      
      if (ramdom == 1){
         console.log("rock");
+        return "rock" ;
 
      }else if (ramdom == 2) {
         console.log("paper");
+        return "paper" ;
 
      } else {
         console.log ("scissors");
+        return "scissors" ;
      }
      
-     return compChoice = ramdom ;
+     
 }
 
 function getHumanChoice(){
 
     let humnChoice=prompt("Select rock,paper, or scissors");
 
-    return humanChoice = humnChoice ;
+     return humnChoice.toLowerCase();
     
 }
 
@@ -31,25 +33,22 @@ let  computerScore= 0 ;
 
 function playRound(humanChoice,compChoice){
     
-    if  (humanChoice.toLowerCas() !== "rock" || humanChoice.toLowerCas() !== "paper" || humanChoice.toLowerCas() !== "scissors"  ){
 
-        return alert("Please enter a valid option")
-
-    } else if (humanChoice.toLowerCas() === compChoice){
+    if (humanChoice === compChoice){
 
         return console.log (`${humanChoice} and ${compChoice} means a tie!`);
 
-    } else if (humanChoice.toLowerCas() === "rock" && compChoice === "scissors") {
+    } else if (humanChoice === "rock" && compChoice === "scissors") {
         
         console.log (`${humanChoice} win against ${compChoice} !`);
         return humanScore+=1;
 
-    } else if (humanChoice.toLowerCas() === "paper" && compChoice === "rock"){
+    } else if (humanChoice === "paper" && compChoice === "rock"){
 
         console.log (`${humanChoice} win against ${compChoice} !`);
         return humanScore+=1;
 
-    }else if (humanChoice.toLowerCas() === "scissors" && compChoice === "paper") {
+    }else if (humanChoice === "scissors" && compChoice === "paper") {
 
         console.log (`${humanChoice} win against ${compChoice} !`);
         return humanScore+=1;
@@ -59,5 +58,11 @@ function playRound(humanChoice,compChoice){
        return humanScore+=1;;
     }
 }
-console.log (getComputerChoice());
-console.log (getHumanChoice());
+
+const pepe=getComputerChoice();
+const pepa = getHumanChoice();
+
+playRound(pepa, pepe);
+let humanChoice = pepa;
+let compChoice = pepe;
+
