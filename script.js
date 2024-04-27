@@ -1,68 +1,95 @@
 
 
-function getComputerChoice(){
-    
-     let ramdom= Math.floor(Math.random()*3)+1; // mat floor round the number down, math random generates a number between 0 and 1, multiply by 3, max value now is 2, add one to bring up to 3.
-     
-     if (ramdom == 1){
-        console.log("rock");
-        return "rock" ;
 
-     }else if (ramdom == 2) {
-        console.log("paper");
-        return "paper" ;
-
-     } else {
-        console.log ("scissors");
-        return "scissors" ;
-     }
-     
-     
-}
-
-function getHumanChoice(){
-
-    let humnChoice=prompt("Select rock,paper, or scissors");
-
-     return humnChoice.toLowerCase();
-    
-}
 
 let humanScore = 0 ;
 let  computerScore= 0 ;
 
-function playRound(humanChoice,compChoice){
+
+
+function playgame() {
+
+    for (let i=1; i<=5; i++){
+
+        function getComputerChoice(){
+    
+            let ramdom= Math.floor(Math.random()*3)+1; // mat floor round the number down, math random generates a number between 0 and 1, multiply by 3, max value now is 2, add one to bring up to 3.
+            
+            if (ramdom == 1){
+               
+               return "rock" ;
+       
+            }else if (ramdom == 2) {
+               
+               return "paper" ;
+       
+            } else {
+               
+               return "scissors" ;
+            }
+            
+            
+       }
+       
+       function getHumanChoice(){
+       
+           let humnChoice=prompt("Select rock,paper, or scissors");
+       
+            return humnChoice.toLowerCase();
+           
+       }
+
+            const pepe=getComputerChoice();
+            const pepa = getHumanChoice();
+
+            let humanChoice = pepa;
+            let compChoice = pepe;
+
+        function playRound(humanChoice,compChoice){
     
 
-    if (humanChoice === compChoice){
-
-        return console.log (`${humanChoice} and ${compChoice} means a tie!`);
-
-    } else if (humanChoice === "rock" && compChoice === "scissors") {
+            if (humanChoice === compChoice){
         
-        console.log (`${humanChoice} win against ${compChoice} !`);
-        return humanScore+=1;
+                return console.log (`${humanChoice} and ${compChoice} means a tie!`);
+        
+            } else if (humanChoice === "rock" && compChoice === "scissors") {
+                
+                console.log (`${humanChoice} win against ${compChoice} !`);
+                return humanScore+=1;
+        
+            } else if (humanChoice === "paper" && compChoice === "rock"){
+        
+                console.log (`${humanChoice} win against ${compChoice} !`);
+                return humanScore+=1;
+        
+            }else if (humanChoice === "scissors" && compChoice === "paper") {
+        
+                console.log (`${humanChoice} win against ${compChoice} !`);
+                return humanScore+=1;
+        
+            } else {
+                console.log (`${humanChoice} loses against ${compChoice} !`);
+               return computerScore+=1;;
+            }
+        }
+        playRound(pepa, pepe);
 
-    } else if (humanChoice === "paper" && compChoice === "rock"){
+            if (i==5 && humanScore>computerScore) {
 
-        console.log (`${humanChoice} win against ${compChoice} !`);
-        return humanScore+=1;
+                alert(`Congratulations! PLayer wins with a score of ${humanScore}`);
 
-    }else if (humanChoice === "scissors" && compChoice === "paper") {
+            } else if (i==5 && humanScore<computerScore){
+                alert(`Sorry! the machine wins wit a score ${computerScore}`);
+            }
+            
 
-        console.log (`${humanChoice} win against ${compChoice} !`);
-        return humanScore+=1;
-
-    } else {
-        console.log (`${humanChoice} loses against ${compChoice} !`);
-       return humanScore+=1;;
     }
 }
 
-const pepe=getComputerChoice();
-const pepa = getHumanChoice();
 
-playRound(pepa, pepe);
-let humanChoice = pepa;
-let compChoice = pepe;
+
+const game=playgame();
+
+
+
 
