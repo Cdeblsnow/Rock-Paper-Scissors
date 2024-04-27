@@ -9,7 +9,7 @@ let  computerScore= 0 ;
 
 function playgame() {
 
-    for (let i=1; i<=5; i++){
+    for (let i=1; i<=5; i++){ // every building block needs to be here to ensure it is called every time instead of just once
 
         function getComputerChoice(){
     
@@ -35,7 +35,7 @@ function playgame() {
        
            let humnChoice=prompt("Select rock,paper, or scissors");
        
-            return humnChoice.toLowerCase();
+            return humnChoice.toLowerCase();// this method is here to ensure the comparison on the if below ignores upper case. tried to add it to every comparison but it was longer and did not work.
            
        }
 
@@ -79,7 +79,7 @@ function playgame() {
                 alert(`Congratulations! PLayer wins with a score of ${humanScore}`);
 
             } else if (i==5 && humanScore<computerScore){
-                alert(`Sorry! the machine wins wit a score ${computerScore}`);
+                alert(`Sorry! the machine wins with a score of ${computerScore}`);
             }
             
 
@@ -88,7 +88,7 @@ function playgame() {
 
 
 
-const game=playgame();
+const game=playgame(); // needed so the function is created. remember that if nothing call the function it will be like it does not exist
 
 
 
