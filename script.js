@@ -24,12 +24,13 @@ let  computerScore= 0 ;
        }
  
 
-            function getplayerChoice(){
+            function getPlayerChoice(){
                 const btnPlayerChoice = document.querySelectorAll("button");
             
                 btnPlayerChoice.forEach((button) => {
                     button.addEventListener("click", () => {
                     
+                       
                         const playerChoice = button.id;
                         const compSelection = getComputerChoice();
                         playRound(playerChoice, compSelection);
@@ -41,7 +42,10 @@ let  computerScore= 0 ;
             
 
         function playRound(playerChoice,compChoice){
-    
+            const playerScore = document.querySelector("#playerScore")
+            const compScore = document.querySelector("#compScore")
+                playerScore.textContent = "Player score:" + humanScore;
+                compScore.textContent= "Machine score:" + computerScore;
 
             if (playerChoice === compChoice){
 
@@ -68,16 +72,13 @@ let  computerScore= 0 ;
                 console.log (`${playerChoice} loses against ${compChoice} !`);
                return computerScore+=1;;
             }
+
+            
         }
         
 
-            if ( humanScore>computerScore) {
+            
+getPlayerChoice();
 
-                alert(`Congratulations! PLayer wins with a score of ${humanScore}`);
-                compChoice=0;
 
-            } else if ( humanScore<computerScore){
-                alert(`Sorry! the machine wins with a score of ${computerScore}`);
-                compChoice=0;
-            }
-    getplayerChoice();
+
