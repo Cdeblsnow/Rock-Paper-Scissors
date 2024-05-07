@@ -7,9 +7,6 @@ let  computerScore= 0 ;
 
 
 
-function playgame() {
-
-    for (let i=1; i<=5; i++){ // every building block needs to be here to ensure it is called every time instead of just once
 
         function getComputerChoice(){
     
@@ -33,17 +30,26 @@ function playgame() {
        
        function getHumanChoice(){
        
-           let humnChoice=prompt("Select rock,paper, or scissors");
-       
-            return humnChoice.toLowerCase();// this method is here to ensure the comparison on the if below ignores upper case. tried to add it to every comparison but it was longer and did not work.
-           
+        const btnPlayerChoice = document.querySelectorAll("button");
+        btnPlayerChoice.forEach((button) => {
+        button.addEventListener("click", playRound => {
+
+            console.log(button.id)
+
+            return button.id;
+            
+            
+    
+        }) ;
+    });
        }
 
-            const pepe=getComputerChoice();
-            const pepa = getHumanChoice();
-
-            let humanChoice = pepa;
-            let compChoice = pepe;
+            
+            const compSelection = getComputerChoice();
+            const humanSelection=getHumanChoice();
+            let compChoice = compSelection;
+            let humanChoice = humanSelection;
+            
 
         function playRound(humanChoice,compChoice){
     
@@ -72,23 +78,24 @@ function playgame() {
                return computerScore+=1;;
             }
         }
-        playRound(pepa, pepe);
+        playRound(humanSelection, compSelection);
 
-            if (i==5 && humanScore>computerScore) {
+            if ( humanScore>computerScore) {
 
                 alert(`Congratulations! PLayer wins with a score of ${humanScore}`);
 
-            } else if (i==5 && humanScore<computerScore){
+            } else if ( humanScore<computerScore){
                 alert(`Sorry! the machine wins with a score of ${computerScore}`);
             }
             
 
-    }
-}
 
 
 
-const game=playgame(); // needed so the function is created. remember that if nothing call the function it will be like it does not exist
+
+
+
+
 
 
 
