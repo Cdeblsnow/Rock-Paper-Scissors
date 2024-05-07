@@ -1,13 +1,8 @@
 
-
-
-
 let humanScore = 0 ;
 let  computerScore= 0 ;
 
-
-
-
+            
         function getComputerChoice(){
     
             let ramdom= Math.floor(Math.random()*3)+1; // mat floor round the number down, math random generates a number between 0 and 1, multiply by 3, max value now is 2, add one to bring up to 3.
@@ -27,76 +22,62 @@ let  computerScore= 0 ;
             
             
        }
-       
-       function getHumanChoice(){
-       
-        const btnPlayerChoice = document.querySelectorAll("button");
-        btnPlayerChoice.forEach((button) => {
-        button.addEventListener("click", playRound => {
+ 
 
-            console.log(button.id)
-
-            return button.id;
+            function getplayerChoice(){
+                const btnPlayerChoice = document.querySelectorAll("button");
+            
+                btnPlayerChoice.forEach((button) => {
+                    button.addEventListener("click", () => {
+                    
+                        const playerChoice = button.id;
+                        const compSelection = getComputerChoice();
+                        playRound(playerChoice, compSelection);
+                }) ;
+            });
+          }
             
             
-    
-        }) ;
-    });
-       }
-
-            
-            const compSelection = getComputerChoice();
-            const humanSelection=getHumanChoice();
-            let compChoice = compSelection;
-            let humanChoice = humanSelection;
             
 
-        function playRound(humanChoice,compChoice){
+        function playRound(playerChoice,compChoice){
     
 
-            if (humanChoice === compChoice){
-        
-                return console.log (`${humanChoice} and ${compChoice} means a tie!`);
-        
-            } else if (humanChoice === "rock" && compChoice === "scissors") {
+            if (playerChoice === compChoice){
+
                 
-                console.log (`${humanChoice} win against ${compChoice} !`);
+                return console.log (`${playerChoice} and ${compChoice} means a tie!`);
+                
+        
+            } else if (playerChoice === "rock" && compChoice === "scissors") {
+                
+                console.log (`${playerChoice} win against ${compChoice} !`);
                 return humanScore+=1;
         
-            } else if (humanChoice === "paper" && compChoice === "rock"){
+            } else if (playerChoice === "paper" && compChoice === "rock"){
         
-                console.log (`${humanChoice} win against ${compChoice} !`);
+                console.log (`${playerChoice} win against ${compChoice} !`);
                 return humanScore+=1;
         
-            }else if (humanChoice === "scissors" && compChoice === "paper") {
+            }else if (playerChoice === "scissors" && compChoice === "paper") {
         
-                console.log (`${humanChoice} win against ${compChoice} !`);
+                console.log (`${playerChoice} win against ${compChoice} !`);
                 return humanScore+=1;
         
             } else {
-                console.log (`${humanChoice} loses against ${compChoice} !`);
+                console.log (`${playerChoice} loses against ${compChoice} !`);
                return computerScore+=1;;
             }
         }
-        playRound(humanSelection, compSelection);
+        
 
             if ( humanScore>computerScore) {
 
                 alert(`Congratulations! PLayer wins with a score of ${humanScore}`);
+                compChoice=0;
 
             } else if ( humanScore<computerScore){
                 alert(`Sorry! the machine wins with a score of ${computerScore}`);
+                compChoice=0;
             }
-            
-
-
-
-
-
-
-
-
-
-
-
-
+    getplayerChoice();
